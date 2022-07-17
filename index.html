@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="static/css/style.css">
     <title>B2Brain</title>
   </head>
-  <body class="container-fluid d-flex flex-column flex-sm-row">
+  <body class="d-flex flex-column flex-sm-row">
     <!-- Start Side Navbar -->
-    <nav class="navbar navbar-expand-sm navbar-light b2b-nav d-flex flex-sm-column">
+    <nav class="navbar navbar-expand-sm navbar-light b2b-nav d-flex flex-sm-column ps-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
               <img src="static/img/logo.png" alt="brand-logo" width="35" height="32" class="d-inline-block align-text-top">
@@ -22,7 +22,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse w-100 position-relative" id="navbarSupportedContent">
-          <ul class="navbar-nav w-100 d-flex flex-sm-column position-absolute top-0 start-0 mt-4">
+          <ul class="navbar-nav w-100 d-flex flex-sm-column position-absolute top-0 start-10 mt-4 bg-white">
             <li>
                 <a class="nav-link d-flex align-items-center" href="#">
                     <img src="static/img/nav-icons/home.png" alt="nav-icon" class="nav-icon">
@@ -41,17 +41,27 @@
                     Leads
                 </a>
             </li>
-            <li>
-                <a class="nav-link d-flex align-items-center" href="#">
-                  <img src="static/img/nav-icons/building.png" alt="nav-icon" class="nav-icon">
-                  Accounts
+            <li class="nav-item dropdown position-relative">
+                <a onclick="toggleIcon(this)" class="nav-link d-flex align-items-center dropdown-close" href="#" id="accounts" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="false">
+                    <img src="static/img/nav-icons/building.png" alt="nav-icon" class="nav-icon">
+                    Accounts
                 </a>
+                <ul class="dropdown-menu border-top-0 border-end-0 border-bottom-0 position-sticky" aria-labelledby="accounts">
+                  <li><a class="dropdown-item" href="#">Manage all</a></li>
+                  <li><a class="dropdown-item" href="#">Track new accounts</a></li>
+                  <li><a class="dropdown-item" href="#">Bulk Import</a></li>
+                </ul>
             </li>
-            <li>
-                <a class="nav-link d-flex align-items-center" href="#">
-                  <img src="static/img/nav-icons/cog.png" alt="nav-icon" class="nav-icon">
-                  Preferences
+            <li class="nav-item dropdown position-relative">
+                <a onclick="toggleIcon(this)" class="nav-link d-flex align-items-center dropdown-close" href="#" id="preference" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="false">
+                    <img src="static/img/nav-icons/cog.png" alt="nav-icon" class="nav-icon">
+                    Preferences
                 </a>
+                <ul class="dropdown-menu border-top-0 border-end-0 border-bottom-0 position-sticky" aria-labelledby="preference">
+                  <li><a class="dropdown-item" href="#">Product Focus</a></li>
+                  <li><a class="dropdown-item" href="#">Intel Preferences</a></li>
+                  <li><a class="dropdown-item" href="#">Lead Persona</a></li>
+                </ul>
             </li>
             <li>
                 <a class="nav-link d-flex align-items-center" href="#">
@@ -77,13 +87,41 @@
     <!-- End Side Navbar -->
 
     <!-- Start Main content -->
-    <main class="ps-0 ps-sm-5 flex-grow-1">
-        <h1>Hello, world!</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices auctor ornare. Etiam iaculis non est non dictum. Suspendisse lobortis, lectus tristique mollis bibendum, eros urna viverra nulla, quis ornare nulla sapien faucibus risus. Fusce in egestas orci. Donec vel nunc sed libero rhoncus ullamcorper tempor non orci. Nulla id risus id enim aliquet tempor. Mauris lacus nibh, efficitur sed malesuada quis, suscipit ac risus. Morbi imperdiet lacinia nisl, quis sollicitudin tortor blandit non. Praesent accumsan purus risus, rhoncus eleifend erat rhoncus sit amet. Maecenas id molestie erat.</p>
+    <main class="flex-grow-1">
+        <!-- Start Search bar -->
+        <section class="navbar navbar-light search-bar-wrapper">
+            <div class="container-fluid d-flex">
+               <span class="search-input-wrapper">
+                    <label for="search">
+                        <img id="search-icon" src="static/img/search.png" alt="search" class="me-1" width="22">
+                    </label>
+                    <input
+                        class="search-bar me-2"
+                        type="text"
+                        placeholder="Search by account name or website"
+                        id="search"
+                    >
+               </span>
+               <div class="d-grid gap-2 d-sm-block">
+                <button class="btn btn-light btn-sm position-relative me-1" type="button">
+                    <img src="static/img/bell.png" alt="">
+                    <span class="position-absolute top-0 start-100 translate-middle p-1 border border-light rounded-circle" style="background:#FF7474;">
+                        <span class="visually-hidden">New alerts</span>
+                    </span>
+                </button>
+                <button class="btn p-0 btn-sm" type="button">
+                    <img src="static/img/avatar.png" alt="">
+                </button>
+              </div>
+            </div>
+        </section>
+        <!-- End Search bar -->
     </main>
     <!-- Start Main content -->
     
     <!-- Bootstrap javascript Link -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Main javascript file -->
+    <script src="static/js/app.js"></script>
   </body>
 </html>
