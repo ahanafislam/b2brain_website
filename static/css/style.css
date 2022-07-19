@@ -120,6 +120,16 @@ body {
     size: 22px;
 }
 
+.result-logo {
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30px;
+    width: 50px;
+    height: 50px;
+    color: white;
+}
+
 .result-card {
     width: 342px;
 }
@@ -190,5 +200,9 @@ body {
 
     .quick-action {
         width: 50%;
+    }
+
+    #search-result-row {
+        min-width: 800px;
     }
 }
