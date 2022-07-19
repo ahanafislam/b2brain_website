@@ -37,7 +37,7 @@ body {
     margin: 0 5px;
 }
 
-.nav-link:hover {
+.nav-link:hover, .active {
     color: black;
     font-weight: 700;
 }
@@ -95,19 +95,37 @@ body {
     color: rgba(0,0,0,.55);
 }
 
-.search-input-wrapper {
-    /* width: 100%; */
+/* Style for customers section */
+.client-card {
+    width: 100%;
+    padding: 25px;
+}
+
+.client-message-body {
+    background: url(../img/clients/quotation.png);
+    background-repeat: no-repeat;
+    padding: 0 0 0 2.7rem;
+    width: 250px;
+}
+
+.client-message-body h6 {
+    font-weight: 700;
+    font-size: 12px;
 }
 
 /* Media query for different screen */
 @media only screen and (min-width: 768px) {
     .b2b-nav {
         width: 239px;
-        height: 100vh;
+        height: inherit;
     }
 
     .search-input-wrapper {
         margin-left: 24px;
         width: 60%;
+    }
+
+    .client-card {
+        max-width: 28rem;
     }
 }
