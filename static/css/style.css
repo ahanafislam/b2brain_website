@@ -113,6 +113,65 @@ body {
     font-size: 12px;
 }
 
+/* Style search result section */
+#search-result h4{
+    font-weight: 700;
+    opacity: 0.5;
+    size: 22px;
+}
+
+.result-card {
+    width: 342px;
+}
+
+.result-title {
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.result-link {
+    font-weight: 400;
+    font-size: 12px;
+    opacity: 0.5;
+    color: #000;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+.result-btn {
+    border: 1px solid #FF6059;
+    border-radius: 2px;
+    color: #FF6059;
+    background-color: inherit;
+    padding: 7px 10px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    transition: background-color 1s linear;
+}
+
+.result-btn:hover {
+    background-color: #FF6059;
+    color: white;
+}
+
+.quick-action-link {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+    text-decoration: none;
+    color: #000;
+    transition: color 0.5s linear;
+    margin-bottom: 33px;
+}
+
+.quick-action-link:hover {
+    color: #FF6059;
+}
+
 /* Media query for different screen */
 @media only screen and (min-width: 768px) {
     .b2b-nav {
@@ -127,5 +186,9 @@ body {
 
     .client-card {
         max-width: 28rem;
+    }
+
+    .quick-action {
+        width: 50%;
     }
 }
