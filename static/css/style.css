@@ -83,7 +83,7 @@ body {
     border-radius: 5px;
 }
 
-#search-icon {
+#search-icon, #close-btn {
     cursor: pointer;
 }
 
@@ -116,7 +116,7 @@ body {
 /* Media query for different screen */
 @media only screen and (min-width: 768px) {
     .b2b-nav {
-        width: 239px;
+        min-width: 210px;
         height: inherit;
     }
 
