@@ -25,7 +25,7 @@ const close = () => {
 
 // Function for display search result
 const displaySearchResult = data => {
-    const {company, website, color, logo} = data;
+    const {company, website, color, logo, slug} = data;
     const div = document.createElement('div');
     const companyInitial = company.charAt(0);
 
@@ -34,22 +34,35 @@ const displaySearchResult = data => {
     div.innerHTML = `
         <div class="d-flex justify-content-between align-items-center mb-5 result-card">
             <div class="d-flex">
-            ${
-              logo ? `<img src="static/img/harrow.png" alt="client-logo"/>`
-                : `<span class="result-logo d-flex justify-content-center align-items-center" style="background: ${color === 'deep-orange' ? 'orange' : color}">${companyInitial}</span>`
-            }
-            <div class="ms-4">
-                <p class="result-title">${company}</p>
-                <a href="#" class="result-link">${website}</a>
-            </div>
+                ${
+                logo ? `<img src="static/img/harrow.png" alt="client-logo"/>`
+                    : `<span class="result-logo d-flex justify-content-center align-items-center" style="background: ${color === 'deep-orange' ? 'orange' : color}">${companyInitial}</span>`
+                }
+                <div class="ms-4">
+                    <p class="result-title">${company}</p>
+                    <a href="#" class="result-link">${website}</a>
+                    <p>${slug}</p>
+                </div>
             </div>
             <div>
-            <button class="result-btn">Track</button>
+                <button class="result-btn" onclick='trackInfo(this)'>Track</button>
             </div>
         </div>
     `;
     searchResultRow.appendChild(div);
     console.log(data);
+}
+
+// Function for Track Company info
+const trackInfo = e => {
+    e.classList.remove("result-link");
+    e.classList.add("tracking-btn");
+    e.textContent = "Tracking";
+    
+    const companyName = e.parentElement.previousElementSibling.childNodes[3].childNodes[1].textContent;
+    const companySlug = e.parentElement.previousElementSibling.childNodes[3].childNodes[3].textContent;
+    const timestamp = new Date();
+    console.log(`Organization Name: ${companyName}\nOrganization Slug: ${companySlug}\nTimestamp: ${timestamp}`);
 }
 
 // Listen on click for close search
@@ -90,12 +103,12 @@ searchInput.addEventListener('focus', e => {
 //     });
 // });
 
-searchInput.addEventListener('keyup', e => {
-    const searchValue = e.target.value;
+// Function for fetch data from api
+const fetchData = async value => {
+    const response = await fetch(`https://tva.staging.b2brain.com/search/autocomplete_org_all/?q=${value}`);
+    const results = await response.json();
 
-    fetch(`https://tva.staging.b2brain.com/search/autocomplete_org_all/?q=${searchValue}`)
-    .then(res => res.json())
-    .then(results => {
+    if(results) {
         searchResultRow.innerHTML = ``;
         if(results.length > 0) {
             results.map(result => {
@@ -105,6 +118,32 @@ searchInput.addEventListener('keyup', e => {
         else {
             searchResultRow.innerHTML = `<p class="text-danger">Sorry search result not found</p>`;
         }
-    });
+    }
+
+    // fetch(`https://tva.staging.b2brain.com/search/autocomplete_org_all/?q=${searchValue}`)
+    // .then(res => res.json())
+    // .then(results => {
+    //     searchResultRow.innerHTML = ``;
+    //     if(results.length > 0) {
+    //         results.map(result => {
+    //             displaySearchResult(result);
+    //         })
+    //     }
+    //     else {
+    //         searchResultRow.innerHTML = `<p class="text-danger">Sorry search result not found</p>`;
+    //     }
+    // });
+}
+
+searchInput.addEventListener('keyup', e => {
+    const searchValue = e.target.value;
+    searchResultRow.innerHTML = `
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    `;
+    fetchData(searchValue);
 });
 
