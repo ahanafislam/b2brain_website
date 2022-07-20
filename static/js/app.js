@@ -50,7 +50,6 @@ const displaySearchResult = data => {
         </div>
     `;
     searchResultRow.appendChild(div);
-    console.log(data);
 }
 
 // Function for Track Company info
