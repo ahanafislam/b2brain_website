@@ -86,23 +86,6 @@ searchInput.addEventListener('focus', e => {
     searchResult.classList.add('d-md-flex');
 });
 
-
-// Listen event for search input submit
-// searchForm.addEventListener('submit', e => {
-//     e.preventDefault();
-//     const searchValue = searchInput.value;
-
-//     fetch(`https://tva.staging.b2brain.com/search/autocomplete_org_all/?q=${searchValue}`)
-//     .then(res => res.json())
-//     .then(results => {
-//         searchResultRow.innerHTML = ``;
-//         console.log(results);
-//         results.map(result => {
-//             displaySearchResult(result);
-//         })
-//     });
-// });
-
 // Function for fetch data from api
 const fetchData = async value => {
     const response = await fetch(`https://tva.staging.b2brain.com/search/autocomplete_org_all/?q=${value}`);
@@ -119,20 +102,6 @@ const fetchData = async value => {
             searchResultRow.innerHTML = `<p class="text-danger">Sorry search result not found</p>`;
         }
     }
-
-    // fetch(`https://tva.staging.b2brain.com/search/autocomplete_org_all/?q=${searchValue}`)
-    // .then(res => res.json())
-    // .then(results => {
-    //     searchResultRow.innerHTML = ``;
-    //     if(results.length > 0) {
-    //         results.map(result => {
-    //             displaySearchResult(result);
-    //         })
-    //     }
-    //     else {
-    //         searchResultRow.innerHTML = `<p class="text-danger">Sorry search result not found</p>`;
-    //     }
-    // });
 }
 
 searchInput.addEventListener('keyup', e => {
